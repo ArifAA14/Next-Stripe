@@ -31,7 +31,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 					<img
 						src={product.images[0]}
 						alt={product.name}
-						className="w-full h-full object-cover max-h-[400px]   rounded-xl  max-w-full"
+						className="w-full h-full object-fill max-h-[400px]   rounded-xl  max-w-full"
 					/>
 				</div>
 
