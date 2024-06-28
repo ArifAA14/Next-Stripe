@@ -37,13 +37,13 @@ function Product({ product }: { product: ProductWithPrice }) {
 
 				<div className="flex flex-col gap-1 mt-0 ml-1 text-left">
 					<h1 className="text-base font-medium text-black">{product.name}</h1>
-					<p className=" text-xs font-normal text-gray-600">
+					<p className=" text-xs font-normal text-gray-400">
 						{product &&
 							product.description &&
 							product.description.slice(0, 100)}
 					</p>
 					<p className="text-base font-medium text-black">£{product.price}</p>
-					<button className="bg-neutral-200 border text-black text-base font-normal rounded-md px-4 py-2 mt-2">
+					<button className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2">
 						View
 					</button>
 					<button className="bg-black text-white text-base font-normal rounded-md px-4 py-2 mt-2">
