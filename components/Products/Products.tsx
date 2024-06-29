@@ -3,7 +3,6 @@ import React from "react";
 import Product from "./Product";
 
 function Products({ products }: { products: ProductWithPrice[] }) {
-	console.log(products);
 	return (
 		<div className="grid md:grid-cols-2 grid-cols-1 w-full h-full gap-10 mt-14 mb-10">
 			{products.map((product) => (

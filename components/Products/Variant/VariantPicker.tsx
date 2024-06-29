@@ -34,7 +34,7 @@ function VariantPicker({
 						<DropdownMenuItem
 							key={option}
 							className="cursor-pointer hover:bg-neutral-50 px-2 py-1 rounded-md hover:font-semibold transition-all ease-linear duration-200
-							flex items-center justify-between w-full"
+							flex items-center justify-between w-full outline-none"
 							onSelect={() => setSize(option)}
 						>
 							<p className="">{option}</p>

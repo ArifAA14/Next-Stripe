@@ -20,6 +20,8 @@ export const DropdownMenuContent = React.forwardRef<
 				{...props}
 				ref={forwardedRef}
 				className="border shadow-sm p-3 flex flex-col gap-1 text-sm bg-white rounded-md w-[190px] max-w-[300px] z-10 "
+				sideOffset={4}
+				side="bottom"
 			>
 				{children}
 				<DropdownMenuPrimitive.Arrow className="" color="bg-white" />

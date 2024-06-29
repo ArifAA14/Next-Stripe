@@ -4,6 +4,7 @@ import { ProductWithPrice } from "@/app/actions/search";
 import React from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
+import Link from "next/link";
 
 function Product({ product }: { product: ProductWithPrice }) {
 	const [size, setSize] = React.useState<string | null>(null);
@@ -57,16 +58,24 @@ function Product({ product }: { product: ProductWithPrice }) {
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<button
-							className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2
+						<Link
+							href={`product/${product.id}`}
+							className="w-full "
+							passHref
+							legacyBehavior
+							prefetch
+						>
+							<button
+								className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2
 							hover:bg-neutral-100 transition duration-300 ease-in-out
 						"
-						>
-							view
-						</button>
+							>
+								view
+							</button>
+						</Link>
 						<button
 							className="bg-black text-white text-base font-normal rounded-md px-4 py-2 mt-2
-						hover:bg-black/80 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+						hover:bg-black/80 transition duration-300 ease-in-out disabled:opacity-80 disabled:cursor-not-allowed
 						"
 							disabled={!size}
 						>
