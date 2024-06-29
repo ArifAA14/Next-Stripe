@@ -23,6 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 					height={400}
 					loading="eager"
 					className="rounded-md shadow"
+					blurDataURL={product.images[0]}
 				/>
 
 				<div className="flex flex-col gap-5 justify-between">

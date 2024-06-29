@@ -1,3 +1,4 @@
+import { BackpackIcon } from "@radix-ui/react-icons";
 import React from "react";
 
 function Head() {
@@ -8,8 +9,7 @@ function Head() {
 			</h1>
 
 			<div className="flex items-center md:gap-10 gap-4">
-				<h1 className="md:text-lg font-normal lowercase">categories</h1>
-				<h1 className="md:text-lg font-normal lowercase">cart</h1>
+				<BackpackIcon className="w-6 h-6 cursor-pointer" />
 			</div>
 		</div>
 	);
