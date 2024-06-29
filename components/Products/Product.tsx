@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
 
 function Product({ product }: { product: ProductWithPrice }) {
+	const [size, setSize] = React.useState<string | null>(null);
 	return (
 		<Dialog>
 			<DialogTrigger className="outline-none focus:outline-none">
@@ -32,19 +33,23 @@ function Product({ product }: { product: ProductWithPrice }) {
 					<img
 						src={product.images[0]}
 						alt={product.name}
-						className="w-full h-full object-fill  object-center  max-h-[350px]  rounded-md  "
+						className="w-full h-full object-fill  object-center  max-h-[300px] md:max-h-[500px]  rounded-md  "
 					/>
 				</div>
 
 				<div className="flex flex-col gap-1 mt-0  justify-between">
 					<div className="flex flex-col gap-1">
 						<h1 className="text-base font-medium text-black">{product.name}</h1>
-						<p className=" text-[11px] md:text-sm tracking-tight font-normal text-gray-400 ">
+						<p className=" text-[12px] md:text-sm tracking-tighter md:tracking-tight font-normal text-gray-400 ">
 							{product && product.description}
 						</p>
 
 						<div className="flex items-center w-full justify-between mt-4">
-							<VariantPicker type={product.metadata.type} />
+							<VariantPicker
+								type={product.metadata.type}
+								size={size}
+								setSize={setSize}
+							/>
 							<p className="text-base font-medium text-black ">
 								£{product.price}
 							</p>
@@ -52,10 +57,19 @@ function Product({ product }: { product: ProductWithPrice }) {
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<button className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2">
+						<button
+							className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2
+							hover:bg-neutral-100 transition duration-300 ease-in-out
+						"
+						>
 							view
 						</button>
-						<button className="bg-black text-white text-base font-normal rounded-md px-4 py-2 mt-2">
+						<button
+							className="bg-black text-white text-base font-normal rounded-md px-4 py-2 mt-2
+						hover:bg-black/80 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+						"
+							disabled={!size}
+						>
 							add
 						</button>
 					</div>
