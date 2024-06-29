@@ -1,10 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import { ProductWithPrice } from "@/app/actions/search";
+import Link from "next/link";
 import React from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
-import Link from "next/link";
 
 function Product({ product }: { product: ProductWithPrice }) {
 	const [size, setSize] = React.useState<string | null>(null);
