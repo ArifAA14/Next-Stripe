@@ -59,6 +59,14 @@ class Server {
       }
     }
   }
+
+  public async uploadImages(images: string[], product: Stripe.Product) {
+    const res = await stripe.products.update(product.id, {
+      images,
+    });
+    return res;
+
+  }
 }
 
 export default Server;

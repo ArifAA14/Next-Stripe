@@ -4,27 +4,20 @@ import { ArrowLeftIcon, BackpackIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import Picker from "./Picker";
+import Carousel from "@/components/ui/Carousel/Carousel";
 
 export default async function Page({ params }: { params: { id: string } }) {
 	const server = new Server();
 	const product = await server.getProduct(params.id);
 
 	return (
-		<main className="flex min-h-screen flex-col p-10  md:p-20 w-full md:max-w-[75%] md:mx-auto relative">
+		<main className="flex min-h-screen flex-col p-10  md:p-20 w-full md:max-w-[75%] md:mx-auto relative ">
 			<Link href={"/"}>
 				<ArrowLeftIcon className="w-6 h-6 absolute top-8 left-10 cursor-pointer" />
 			</Link>
 			<BackpackIcon className="w-6 h-6 absolute top-8 right-10 cursor-pointer" />
-			<div className="flex flex-col md:flex-row gap-10 mt-10">
-				<Image
-					src={product.images[0]}
-					alt={product.name}
-					width={500}
-					height={400}
-					loading="eager"
-					className="rounded-md shadow"
-					blurDataURL={product.images[0]}
-				/>
+			<div className="flex flex-col md:flex-row gap-10 mt-10 md:mt-16 w-full h-full ">
+				<Carousel images={product.images} />
 
 				<div className="flex flex-col gap-5 justify-between">
 					<div className="flex flex-col gap-4">
