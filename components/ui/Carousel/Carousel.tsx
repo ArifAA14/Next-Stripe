@@ -27,14 +27,14 @@ function Carousel({ images }: { images: string[] }) {
 
 	return (
 		<div className=" relative w-full h-full">
-			<AnimatePresence mode="popLayout">
+			<AnimatePresence mode="wait">
 				{images.map((image, index) =>
 					index === currentIndex ? (
 						<motion.img
 							key={index}
 							src={image}
 							alt="product"
-							className="rounded-md shadow w-full min-h-[500px]  md:min-w-[420px] h-full object-fill  cursor-pointer"
+							className="rounded-md shadow w-full md:min-h-[500px] md:max-h-[600px] max-h-[400px]  md:min-w-[420px] h-full object-fill  cursor-pointer"
 							initial={{ visibility: "hidden" }}
 							animate={{ opacity: 1, visibility: "visible" }}
 							exit={{ visibility: "hidden" }}
