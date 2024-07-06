@@ -8,18 +8,23 @@ export interface ItemArray {
   id: any,
   thumbnail: string,
   desc: string | null,
+  priceId: any,
 }
 
 type State = {
   items: ItemArray[],
   addItem: (item: ItemArray) => void,
   removeItem: (title: string) => void,
+  clearCart: () => void,
 };
 
 const cartStore = (set: (fn: (state: State) => State) => void): State => ({
   items: [],
   addItem: (item: ItemArray) => {
     set((state) => {
+      if (state.items.some((i) => i.title === item.title && i.size === item.size)) {
+        return state;
+      }
       return {
         ...state,
         items: [...state.items, item],
@@ -35,6 +40,14 @@ const cartStore = (set: (fn: (state: State) => State) => void): State => ({
     });
 
   },
+  clearCart: () => {
+    set((state) => {
+      return {
+        ...state,
+        items: [],
+      };
+    });
+  }
 });
 
 const useStore = create(

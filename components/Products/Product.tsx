@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
+import Image from "next/image";
 
 function Product({ product }: { product: ProductWithPrice }) {
 	const [size, setSize] = React.useState<string | null>(null);
@@ -15,14 +16,18 @@ function Product({ product }: { product: ProductWithPrice }) {
 					key={product.id}
 					className="w-full h-full rounded-xl  group cursor-pointer  relative flex flex-col gap-2.5 "
 				>
-					<img
+					<Image
 						src={product.images[0]}
 						alt={product.name}
-						className="w-full h-full object-contain rounded shadow-sm 
-						md:max-h-[600px] max-w-full
+						priority
+						width={400}
+						height={400}
+						quality={100}
+						className="w-full h-full object-fill rounded shadow-sm 
+						md:max-h-[500px] max-w-full
 						group-hover:opacity-80 transition duration-300 ease-in-out"
 					/>
-					<div className="flex flex-col gap-1 mt-0 ml-1 text-left">
+					<div className="flex flex-col gap-1 mt-1 ml-1 text-left">
 						<h1 className="text-base font-medium text-black">{product.name}</h1>
 						<p className="text-base font-normal text-gray-500">1 Color</p>
 						<p className="text-base font-medium text-black">£{product.price}</p>
@@ -31,10 +36,14 @@ function Product({ product }: { product: ProductWithPrice }) {
 			</DialogTrigger>
 			<DialogContent className=" bg-white p-4 rounded-xl max-h-[90vh] w-[85vw] md:w-[90vw] md:max-w-[700px] max-w-[400px]   grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
 				<div className=" w-full h-full  outline-none    ">
-					<img
+					<Image
 						src={product.images[0]}
 						alt={product.name}
-						className="w-full h-full object-fill  object-center  max-h-[300px] md:max-h-[500px]  rounded-md  "
+						priority
+						width={400}
+						height={400}
+						quality={100}
+						className="w-full h-full object-fill   object-right  max-h-[300px] md:max-h-[350px]  rounded-md  "
 					/>
 				</div>
 

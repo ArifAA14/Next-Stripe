@@ -21,6 +21,7 @@ function Add({
 				id: crypto.randomUUID(),
 				thumbnail: product.images[0],
 				desc: product.description,
+				priceId: product.default_price,
 			});
 		}
 		console.log(items);
