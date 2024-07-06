@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import { AnimatePresence, motion, useDragControls } from "framer-motion";
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
+import { AnimatePresence, motion, useDragControls } from "framer-motion";
+import { useState } from "react";
 
 function Carousel({ images }: { images: string[] }) {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,7 +27,7 @@ function Carousel({ images }: { images: string[] }) {
 
 	return (
 		<div className=" relative w-full h-full">
-			<AnimatePresence mode="wait">
+			<AnimatePresence mode="popLayout">
 				{images.map((image, index) =>
 					index === currentIndex ? (
 						<motion.img
@@ -48,7 +48,6 @@ function Carousel({ images }: { images: string[] }) {
 								stiffness: 100,
 							}}
 							onDragEnd={handleDragEnd}
-							dragControls={dragControls}
 						/>
 					) : null
 				)}

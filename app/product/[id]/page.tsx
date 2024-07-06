@@ -1,10 +1,9 @@
 import Server from "@/app/actions/server";
-import ProductInfo from "@/components/misc/ProductInfo";
-import { ArrowLeftIcon, BackpackIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
-import Link from "next/link";
-import Picker from "./Picker";
+import CartComponent from "@/components/Cart/Cart";
+import Product from "@/components/ProductPage/Product";
 import Carousel from "@/components/ui/Carousel/Carousel";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default async function Page({ params }: { params: { id: string } }) {
 	const server = new Server();
@@ -15,33 +14,11 @@ export default async function Page({ params }: { params: { id: string } }) {
 			<Link href={"/"}>
 				<ArrowLeftIcon className="w-6 h-6 absolute top-8 left-10 cursor-pointer" />
 			</Link>
-			<BackpackIcon className="w-6 h-6 absolute top-8 right-10 cursor-pointer" />
+			<CartComponent />
 			<div className="flex flex-col md:flex-row gap-10 mt-10 md:mt-16 w-full h-full ">
 				<Carousel images={product.images} />
 
-				<div className="flex flex-col gap-5 justify-between">
-					<div className="flex flex-col gap-4">
-						<h1 className="text-xl font-semibold">{product.name}</h1>
-						<p className="text-gray-500 text-pretty tracking-tight">
-							{product.description}
-						</p>
-
-						<div className="flex items-center w-full justify-between mt-2">
-							<p className="text-base font-semibold text-black ">
-								£{product.price}
-							</p>
-							<Picker type={product.metadata.type} />
-						</div>
-
-						<ProductInfo />
-					</div>
-
-					<div className="flex flex-col gap-2">
-						<button className="bg-black text-white px-4 py-2 rounded-md font-semibold">
-							add
-						</button>
-					</div>
-				</div>
+				<Product product={product} />
 			</div>
 		</main>
 	);
