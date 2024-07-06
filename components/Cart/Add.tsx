@@ -18,7 +18,7 @@ function Add({
 				price: product.price,
 				size,
 				title: product.name,
-				id: product.id,
+				id: crypto.randomUUID(),
 				thumbnail: product.images[0],
 				desc: product.description,
 			});

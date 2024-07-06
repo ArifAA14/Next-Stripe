@@ -26,13 +26,14 @@ const cartStore = (set: (fn: (state: State) => State) => void): State => ({
       };
     });
   },
-  removeItem: (title: string) => {
+  removeItem: (id: string) => {
     set((state) => {
       return {
         ...state,
-        items: state.items.filter((i) => i.title !== title),
+        items: state.items.filter((i) => i.id !== id),
       };
     });
+
   },
 });
 
