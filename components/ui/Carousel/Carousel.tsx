@@ -1,11 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import { AnimatePresence, motion, useDragControls } from "framer-motion";
 import { useState } from "react";
 
 function Carousel({ images }: { images: string[] }) {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const dragControls = useDragControls();
 
 	const handleNext = () => {
 		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -17,51 +16,36 @@ function Carousel({ images }: { images: string[] }) {
 		);
 	};
 
-	const handleDragEnd = (event: any, info: any) => {
-		if (info.offset.x < -100) {
-			handleNext();
-		} else if (info.offset.x > 100) {
-			handlePrev();
-		}
-	};
-
 	return (
-		<div className=" relative w-full h-full">
-			<AnimatePresence mode="popLayout">
-				{images.map((image, index) =>
-					index === currentIndex ? (
-						<motion.img
-							key={index}
+		<div className="relative w-full h-full overflow-hidden">
+			<div
+				className="w-full h-full flex transition-transform duration-700 ease-in-out rounded-md"
+				style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+			>
+				{images.map((image, index) => (
+					<div
+						key={index}
+						className="w-full flex-shrink-0 h-full"
+						style={{ flexBasis: "100%" }}
+					>
+						<img
 							src={image}
 							alt="product"
-							className="rounded-md shadow w-full md:min-h-[500px] md:max-h-[600px] max-h-[400px]  md:min-w-[420px] h-full object-fill  cursor-pointer"
-							initial={{ visibility: "hidden" }}
-							animate={{ opacity: 1, visibility: "visible" }}
-							exit={{ visibility: "hidden" }}
-							drag="x"
-							dragConstraints={{ left: 0, right: 0 }}
-							dragElastic={0.1}
-							transition={{
-								duration: 0.6,
-								type: "spring",
-								damping: 20,
-								stiffness: 100,
-							}}
-							onDragEnd={handleDragEnd}
+							className="w-full h-full object-cover"
 						/>
-					) : null
-				)}
-			</AnimatePresence>
-			<div className="flex absolute gap-4 bottom-2 right-4">
+					</div>
+				))}
+			</div>
+			<div className="flex absolute gap-4 bottom-6 right-4">
 				<button
 					onClick={handlePrev}
-					className=" transform -translate-y-1/2 bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
+					className="bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
 				>
 					<CaretLeftIcon className="w-6 h-6" />
 				</button>
 				<button
 					onClick={handleNext}
-					className=" transform -translate-y-1/2 bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
+					className="bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
 				>
 					<CaretRightIcon className="w-6 h-6" />
 				</button>

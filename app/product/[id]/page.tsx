@@ -15,11 +15,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 				<ArrowLeftIcon className="w-6 h-6 absolute top-8 left-10 cursor-pointer" />
 			</Link>
 			<CartComponent />
-			<div className="flex flex-col md:flex-row gap-10 mt-10 md:mt-16 w-full h-full ">
-				<Carousel images={product.images} />
-
-				<Product product={product} />
-			</div>
+			<Product product={product} />
 		</main>
 	);
 }
