@@ -17,21 +17,20 @@ function Carousel({ images }: { images: string[] }) {
 	};
 
 	return (
-		<div className="relative w-full h-full overflow-hidden">
+		<div className="relative w-full h-full overflow-hidden min-h-[400px]">
 			<div
-				className="w-full h-full flex transition-transform duration-700 ease-in-out rounded-md"
+				className="w-full h-full flex transition-transform duration-700 ease-in-out rounded-md min-h-[400px]"
 				style={{ transform: `translateX(-${currentIndex * 100}%)` }}
 			>
 				{images.map((image, index) => (
 					<div
 						key={index}
-						className="w-full flex-shrink-0 h-full min-h-[400px]"
-						style={{ flexBasis: "100%" }}
+						className="w-full flex-shrink-0 h-full min-h-[400px] rounded-md"
 					>
 						<img
 							src={image}
 							alt="product"
-							className="w-full h-full object-cover"
+							className="w-full h-full object-contain min-h-[300px] rounded-md"
 						/>
 					</div>
 				))}

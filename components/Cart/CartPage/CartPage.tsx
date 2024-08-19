@@ -1,5 +1,5 @@
 "use client";
-import useStore from "@/app/providers/cartstore";
+import useStore, { ItemArray } from "@/app/providers/cartstore";
 import { HeartIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,7 @@ import React from "react";
 function CartPage({ checkout }: { checkout: (items: any) => void }) {
 	const { items, removeItem, clearCart } = useStore();
 	const router = useRouter();
+	console.log(items);
 
 	function calculateTotal() {
 		let total = 0;
@@ -17,8 +18,8 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 		return total;
 	}
 
-	function deleteItem(item: any) {
-		return () => removeItem(item.id);
+	function deleteItem(item: ItemArray) {
+		return () => removeItem(item);
 	}
 
 	async function handleCheckout() {
@@ -37,7 +38,7 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 	}
 
 	return (
-		<div className="flex md:flex-row gap-14  md:gap-6 mt-16 flex-col-reverse">
+		<div className="flex md:flex-row gap-14  md:gap-6 mt-16 flex-col-reverse h-full w-full">
 			<div className="flex flex-col md:flex-row gap-10  w-full h-full flex-1 ">
 				{items && items.length > 0 ? (
 					<div className="w-full flex flex-col gap-6">
@@ -59,12 +60,20 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 										<p className="text-lg font-normal">{item.title}</p>
 
 										<div className="flex gap-2 flex-col">
-											<p className="text-md font-normal text-gray-400 ">
-												Size &nbsp;
-												<span className="underline underline-offset-4 text-gray-600">
-													{item.size}
-												</span>
-											</p>
+											<div className="flex gap-4">
+												<p className="text-md font-normal text-gray-400 ">
+													Size &nbsp;
+													<span className="underline underline-offset-4 text-gray-600">
+														{item.size}
+													</span>
+												</p>
+												<p className="text-md font-normal text-gray-400 ">
+													Quantity &nbsp;
+													<span className="underline underline-offset-4 text-gray-600">
+														{item.quantity}
+													</span>
+												</p>
+											</div>
 											<p className="text-md font-semibold">£{item.price}</p>
 										</div>
 									</div>
@@ -82,37 +91,44 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 						))}
 					</div>
 				) : (
-					<p>Your cart is empty</p>
+					<div className="flex flex-col gap-6 w-full items-center justify-center h-full">
+						<p>Your cart is empty</p>
+						<button className="w-full h-[40px] text-white rounded-full px-4 py-2 max-w-[200px] text-center bg-black hover:opacity-90 transition-all ease-linear">
+							browse products
+						</button>
+					</div>
 				)}
 			</div>
-			<div className="flex flex-col gap-6 w-full md:min-w-[350px] md:max-w-[400px]  ">
-				<h2 className="text-2xl font-semibold">Summary</h2>
-				<div className="w-full flex items-center justify-between">
-					<h4 className="text-base font-normal">Subtotal</h4>
-					<p className="text-base font-normal">£{calculateTotal()}</p>
-				</div>
+			{items && items.length > 0 && (
+				<div className="flex flex-col gap-6 w-full md:min-w-[350px] md:max-w-[400px]  ">
+					<h2 className="text-2xl font-semibold">Summary</h2>
+					<div className="w-full flex items-center justify-between">
+						<h4 className="text-base font-normal">Subtotal</h4>
+						<p className="text-base font-normal">£{calculateTotal()}</p>
+					</div>
 
-				<div className="w-full flex items-center justify-between">
-					<h4 className="text-base font-normal">
-						Estimated Delivery & Handling
-					</h4>
-					<p className="text-base font-normal">Free</p>
-				</div>
+					<div className="w-full flex items-center justify-between">
+						<h4 className="text-base font-normal">
+							Estimated Delivery & Handling
+						</h4>
+						<p className="text-base font-normal">Free</p>
+					</div>
 
-				<div className="w-full flex items-center justify-between border-t pt-4 pb-4 border-b">
-					<h4 className="text-base font-normal">Total</h4>
-					<p className="text-base font-medium">
-						£{calculateTotal().toFixed(2)}
-					</p>
-				</div>
+					<div className="w-full flex items-center justify-between border-t pt-4 pb-4 border-b">
+						<h4 className="text-base font-normal">Total</h4>
+						<p className="text-base font-medium">
+							£{calculateTotal().toFixed(2)}
+						</p>
+					</div>
 
-				<button
-					className="w-full h-[40px] text-white rounded-full px-4 py-2 text-center bg-black hover:opacity-90 transition-all ease-linear"
-					onClick={handleCheckout}
-				>
-					checkout
-				</button>
-			</div>
+					<button
+						className="w-full h-[40px] text-white rounded-full px-4 py-2 text-center bg-black hover:opacity-90 transition-all ease-linear"
+						onClick={handleCheckout}
+					>
+						checkout
+					</button>
+				</div>
+			)}
 		</div>
 	);
 }

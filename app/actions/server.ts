@@ -9,6 +9,8 @@ export interface ProductWithPrice extends Stripe.Product {
   price: any;
 }
 
+const url = process.env.NODE_ENV === "production" ? "https://comm-mu.vercel.app/" : "http://localhost:3000";
+
 class Server {
 
 
@@ -74,13 +76,13 @@ class Server {
       line_items: products.map((product: any) => {
         return {
           price: product.priceId,
-          quantity: 1,
+          quantity: product.quantity,
         }
       }),
       mode: 'payment',
       payment_method_types: ['card'],
-      success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:3000/`,
+      success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${url}/cancel`,
 
 
     });

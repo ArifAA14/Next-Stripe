@@ -10,22 +10,35 @@ function Add({
 	size: string | null;
 	product: ProductWithPrice;
 }) {
-	const { addItem, items } = useStore();
+	const { addItem, updateItem, items } = useStore();
 
 	function handleClick() {
-		if (size) {
+		if (!size) return;
+
+		const existingItem = items.find(
+			(i) =>
+				i.title === product.name && i.size === size && i.price === product.price
+		);
+		console.log(existingItem);
+
+		if (existingItem) {
+			console.log("firing this");
+			updateItem(existingItem.id, existingItem.quantity + 1);
+		} else {
+			console.log("firing this not");
 			addItem({
-				price: product.price,
-				size,
 				title: product.name,
-				id: crypto.randomUUID(),
+				price: product.price,
+				size: size,
+				id: product.id + size,
 				thumbnail: product.images[0],
 				desc: product.description,
 				priceId: product.default_price,
+				quantity: 1,
 			});
 		}
-		console.log(items);
 	}
+
 	return (
 		<button
 			className="bg-black text-white px-4 py-2 rounded-md font-semibold"

@@ -6,6 +6,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
 import Image from "next/image";
+import Add from "../Cart/Add";
 
 function Product({ product }: { product: ProductWithPrice }) {
 	const [size, setSize] = React.useState<string | null>(null);
@@ -82,14 +83,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 								view
 							</button>
 						</Link>
-						<button
-							className="bg-black text-white text-base font-normal rounded-md px-4 py-2 mt-2
-						hover:bg-black/80 transition duration-300 ease-in-out disabled:opacity-80 disabled:cursor-not-allowed
-						"
-							disabled={!size}
-						>
-							add
-						</button>
+						<Add size={size} product={product} />
 					</div>
 				</div>
 			</DialogContent>
