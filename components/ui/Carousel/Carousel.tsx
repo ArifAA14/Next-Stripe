@@ -25,7 +25,7 @@ function Carousel({ images }: { images: string[] }) {
 				{images.map((image, index) => (
 					<div
 						key={index}
-						className="w-full flex-shrink-0 h-full"
+						className="w-full flex-shrink-0 h-full min-h-[400px]"
 						style={{ flexBasis: "100%" }}
 					>
 						<img
