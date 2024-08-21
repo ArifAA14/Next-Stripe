@@ -1,10 +1,7 @@
-import Head from "@/components/Head/Head";
-import Products from "@/components/Products/Products";
-import getData from "./actions/search";
-import Server from "./actions/server";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import CartComponent from "@/components/Cart/Cart";
+import Products from "@/components/Products/Products";
+import Link from "next/link";
+import Server from "./actions/server";
 
 export default async function Home() {
 	const server = new Server();

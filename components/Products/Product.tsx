@@ -25,7 +25,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 						height={400}
 						quality={100}
 						className="w-full h-full object-fill rounded shadow-sm 
-						md:max-h-[500px] max-w-full
+						md:max-h-[500px] lg:max-h-[760px] max-w-full
 						group-hover:opacity-80 transition duration-300 ease-in-out"
 					/>
 					<div className="flex flex-col gap-1 mt-1 ml-1 text-left">
