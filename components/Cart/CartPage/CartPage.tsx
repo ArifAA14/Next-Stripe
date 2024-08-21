@@ -91,9 +91,13 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 						))}
 					</div>
 				) : (
-					<div className="flex flex-col gap-6 w-full items-center justify-center h-full">
+					<div className="flex flex-col gap-6 w-full items-center justify-center h-full font-serif">
 						<p>Your cart is empty</p>
-						<button className="w-full h-[40px] text-white rounded-full px-4 py-2 max-w-[200px] text-center bg-black hover:opacity-90 transition-all ease-linear">
+						<button
+							className="w-full h-[40px] text-black border-black border rounded-full px-4 py-2 max-w-[200px] 
+						text-center  hover:opacity-90 transition-all ease-linear"
+							onClick={() => router.push("/")}
+						>
 							browse products
 						</button>
 					</div>
