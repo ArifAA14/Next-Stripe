@@ -28,7 +28,7 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 			const redirectUrl = check && check.url;
 
 			if (redirectUrl) {
-				clearCart();
+				// clearCart();
 				router.push(redirectUrl);
 			}
 			console.log(check);
