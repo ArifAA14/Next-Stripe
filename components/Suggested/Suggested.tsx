@@ -15,7 +15,7 @@ async function Suggested({ product }: { product: ProductWithPrice }) {
 
 	return (
 		<div className="  w-full h-full p-10 bg-white rounded-lg mt-10 mb-40 md:mb-40">
-			<h1 className="text-xl font-normal ">you might also like</h1>
+			<h1 className="text-xl font-normal uppercase">you might also like</h1>
 			<div className="flex w-full h-full mt-10  md:gap-4 flex-col gap-4  md:flex-row ">
 				{suggestedProducts.map((product: ProductWithPrice) => {
 					return (
