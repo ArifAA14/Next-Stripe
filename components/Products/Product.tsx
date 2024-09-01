@@ -35,8 +35,11 @@ function Product({ product }: { product: ProductWithPrice }) {
 					</div>
 				</div>
 			</DialogTrigger>
-			<DialogContent className=" bg-white p-4 rounded-xl max-h-[90vh] w-[85vw] md:w-[90vw] md:max-w-[700px] max-w-[400px]   grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
-				<div className=" w-full h-full  outline-none    ">
+			<DialogContent
+				className=" bg-white p-4 rounded-xl max-h-[80vh] w-[75vw] 
+			md:w-[90vw] md:max-w-[700px] max-w-[400px]   grid grid-cols-1 md:grid-cols-2 gap-4 justify-between"
+			>
+				<div className=" w-full h-full  outline-none   max-h-[350px] ">
 					<Image
 						src={product.images[0]}
 						alt={product.name}
@@ -44,7 +47,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 						width={400}
 						height={400}
 						quality={100}
-						className="w-full h-full object-contain max-h-[400px]  rounded-md  "
+						className="w-full h-full object-fill     rounded-lg  "
 					/>
 				</div>
 
@@ -61,7 +64,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 								size={size}
 								setSize={setSize}
 							/>
-							<p className="text-base font-medium text-black ">
+							<p className="text-base font-medium text-black mr-4 ">
 								£{product.price}
 							</p>
 						</div>
