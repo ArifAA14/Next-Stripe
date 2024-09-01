@@ -36,10 +36,10 @@ function Product({ product }: { product: ProductWithPrice }) {
 				</div>
 			</DialogTrigger>
 			<DialogContent
-				className=" bg-white p-4 rounded-xl  w-[75vw] 
+				className=" bg-white p-4 rounded-xl  w-[75vw] max-h-fit
 			md:w-[90vw] md:max-w-[700px] max-w-[400px]   grid grid-cols-1 md:grid-cols-2 gap-4 justify-between"
 			>
-				<div className=" w-full h-full  outline-none   max-h-[350px] ">
+				<div className=" w-full h-full  outline-none   max-h-[300px] ">
 					<Image
 						src={product.images[0]}
 						alt={product.name}
