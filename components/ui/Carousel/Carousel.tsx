@@ -6,11 +6,13 @@ import { useState } from "react";
 function Carousel({ images }: { images: string[] }) {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const handleNext = () => {
+	const handleNext = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation();
 		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
 	};
 
-	const handlePrev = () => {
+	const handlePrev = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation();
 		setCurrentIndex(
 			(prevIndex) => (prevIndex - 1 + images.length) % images.length
 		);
@@ -25,29 +27,29 @@ function Carousel({ images }: { images: string[] }) {
 				{images.map((image, index) => (
 					<div
 						key={index}
-						className="w-full flex-shrink-0 h-full min-h-[400px] rounded-md"
+						className="w-full flex-shrink-0 h-full min-h-[400px] "
 					>
 						<img
 							src={image}
 							alt="product"
-							className="w-full h-full object-contain min-h-[300px] rounded-md"
+							className="w-full h-full object-contain min-h-[300px] "
 						/>
 					</div>
 				))}
 			</div>
 			<div className="flex absolute gap-4 bottom-6 right-4">
-				<button
-					onClick={handlePrev}
+				<div
+					onClick={(e) => handlePrev(e)}
 					className="bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
 				>
 					<CaretLeftIcon className="w-6 h-6" />
-				</button>
-				<button
-					onClick={handleNext}
+				</div>
+				<div
+					onClick={(e) => handleNext(e)}
 					className="bg-neutral-600/40 backdrop-blur-sm text-white px-2 py-2 rounded-full"
 				>
 					<CaretRightIcon className="w-6 h-6" />
-				</button>
+				</div>
 			</div>
 		</div>
 	);

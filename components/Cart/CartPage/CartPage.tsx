@@ -13,7 +13,9 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 	function calculateTotal() {
 		let total = 0;
 		items.forEach((item) => {
-			total += Number(item.price);
+			total += item.price * item.quantity;
+
+			return total;
 		});
 		return total;
 	}
@@ -108,7 +110,9 @@ function CartPage({ checkout }: { checkout: (items: any) => void }) {
 					<h2 className="text-2xl font-semibold">Summary</h2>
 					<div className="w-full flex items-center justify-between">
 						<h4 className="text-base font-normal">Subtotal</h4>
-						<p className="text-base font-normal">£{calculateTotal()}</p>
+						<p className="text-base font-normal">
+							£{calculateTotal().toFixed(2)}
+						</p>
 					</div>
 
 					<div className="w-full flex items-center justify-between">

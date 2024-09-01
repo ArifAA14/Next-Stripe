@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import VariantPicker from "./Variant/VariantPicker";
 import Image from "next/image";
 import Add from "../Cart/Add";
+import Carousel from "../ui/Carousel/Carousel";
 
 function Product({ product }: { product: ProductWithPrice }) {
 	const [size, setSize] = React.useState<string | null>(null);
@@ -17,17 +18,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 					key={product.id}
 					className="w-full h-full rounded-xl  group cursor-pointer  relative flex flex-col gap-2.5 "
 				>
-					<Image
-						src={product.images[0]}
-						alt={product.name}
-						priority
-						width={400}
-						height={400}
-						quality={100}
-						className="w-full h-full object-fill rounded shadow-sm 
-						md:max-h-[500px] lg:max-h-[760px] max-w-full
-						group-hover:opacity-80 transition duration-300 ease-in-out"
-					/>
+					<Carousel images={product.images} />
 					<div className="flex flex-col gap-1 mt-1 ml-1 text-left">
 						<h1 className="text-base font-medium text-black">{product.name}</h1>
 						<p className="text-base font-normal text-gray-500">1 Color</p>
@@ -39,7 +30,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 				className=" bg-white p-4 rounded-xl  w-[75vw] max-h-fit
 			md:w-[90vw] md:max-w-[700px] max-w-[400px]   grid grid-cols-1 md:grid-cols-2 gap-4 justify-between"
 			>
-				<div className=" w-full h-full  outline-none   max-h-[300px] ">
+				<div className=" w-full h-full  outline-none   max-h-[300px] md:max-h-[400px] ">
 					<Image
 						src={product.images[0]}
 						alt={product.name}
@@ -54,7 +45,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 				<div className="flex flex-col gap-1 mt-0  justify-between">
 					<div className="flex flex-col gap-1">
 						<h1 className="text-base font-medium text-black">{product.name}</h1>
-						<p className=" text-[12px] md:text-sm tracking-tighter md:tracking-tight font-normal text-gray-400 ">
+						<p className=" text-[10px] md:text-sm tracking-tighter md:tracking-tight font-normal text-gray-400 ">
 							{product && product.description}
 						</p>
 
