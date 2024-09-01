@@ -44,7 +44,7 @@ function Product({ product }: { product: ProductWithPrice }) {
 						width={400}
 						height={400}
 						quality={100}
-						className="w-full h-full object-fill   object-right  max-h-[300px] md:max-h-[350px]  rounded-md  "
+						className="w-full h-full object-contain max-h-[400px]  rounded-md  "
 					/>
 				</div>
 
