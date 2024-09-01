@@ -67,7 +67,6 @@ function Product({ product }: { product: ProductWithPrice }) {
 							className="w-full "
 							passHref
 							legacyBehavior
-							prefetch
 						>
 							<button
 								className="bg-white border text-black text-base font-normal rounded-md px-4 py-2 mt-2
