@@ -1,7 +1,7 @@
 import Server from "@/app/actions/server";
 import CartComponent from "@/components/Cart/Cart";
 import Product from "@/components/ProductPage/Product";
-import Suggested from "@/components/Suggested/Suggested";
+import SuggestedProducts from "@/components/Suggested/Suggested";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 				<Product product={product} />
 			</main>
 
-			<Suggested product={product} />
+			<SuggestedProducts product={product} />
 		</div>
 	);
 }
