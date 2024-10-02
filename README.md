@@ -7,5 +7,5 @@ An Open source Stripe + NextJS eCommerce starter.
 3. Customize your front end and storefront as required, add features or remove them.
 
  
-
+// Proper documentation will be added soon!
 
